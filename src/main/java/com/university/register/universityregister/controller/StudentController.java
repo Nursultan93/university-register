@@ -36,10 +36,14 @@ public class StudentController {
   public List<Student> getByGrupNo(@RequestParam("grupNo") String grupNo){
     return studentService.findByStudentGropNo(grupNo);
   }
-  @GetMapping("/{profession}")
+  @GetMapping("/item/{profession}")
   public List<Student> getByPrpfession(@PathVariable String profession){
     return studentService.finByStudentProfession(profession);
   }
 
+  @GetMapping("/{id}")
+  public Student getStudentById(@PathVariable Integer id) {
+    return studentService.getStudentById(id);
+  }
 
 }

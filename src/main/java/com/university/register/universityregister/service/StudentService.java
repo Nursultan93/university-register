@@ -33,9 +33,21 @@ public class StudentService {
   }
 
   public List<Student> findByStudentGropNo(String gruoNo){
-    return studentRepository.findStudentByGroupNo(gruoNo);}
+
+    return studentRepository.findStudentByGroupNo(gruoNo);
+
+  }
+
   public List<Student> finByStudentProfession(String profession){
+
     return studentRepository.findStudentByProfession(profession);
+
+  }
+
+  public Student getStudentById(Integer id){
+
+    return studentRepository.findById(id).get();
+
   }
 
 }
