@@ -32,4 +32,12 @@ public class StudentService {
     studentRepository.deleteById(id);
   }
 
+  public List<Student> findByStudentGropNo(String gruoNo){
+    return studentRepository.findStudentByGroupNo(gruoNo);}
+  public List<Student> finByStudentProfession(String profession){
+    return studentRepository.findStudentByProfession(profession);
+  }
+
 }
+
+
