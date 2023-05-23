@@ -4,14 +4,7 @@ import com.university.register.universityregister.domain.Student;
 import com.university.register.universityregister.service.StudentService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/v1/api/student")
@@ -38,6 +31,14 @@ public class StudentController {
   @DeleteMapping("/{id}")
   public void delete(@PathVariable Integer id) {
     studentService.delete(id);
+  }
+  @GetMapping("/item")
+  public List<Student> getByGrupNo(@RequestParam("grupNo") String grupNo){
+    return studentService.findByStudentGropNo(grupNo);
+  }
+  @GetMapping("/{profession}")
+  public List<Student> getByPrpfession(@PathVariable String profession){
+    return studentService.finByStudentProfession(profession);
   }
 
 
