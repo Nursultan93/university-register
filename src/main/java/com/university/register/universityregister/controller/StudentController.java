@@ -2,6 +2,8 @@ package com.university.register.universityregister.controller;
 
 import com.university.register.universityregister.domain.Student;
 import com.university.register.universityregister.dto.request.StudentRequest;
+import com.university.register.universityregister.dto.request.StudentSearchRequest;
+import com.university.register.universityregister.dto.request.StudentUpdateRequest;
 import com.university.register.universityregister.dto.response.StudentResponse;
 import com.university.register.universityregister.service.StudentService;
 import java.util.List;
@@ -23,18 +25,25 @@ public class StudentController {
   }
 
   @GetMapping
-  public List<Student> getAll(){
+  public List<StudentResponse> getAll(){
     return studentService.getAllStudent();
   }
 
   @PutMapping("/{id}")
-  public Student update(@RequestBody Student student, @PathVariable Integer id){
-    return studentService.update(student, id);
+  public StudentResponse update(@RequestBody StudentUpdateRequest request, @PathVariable Integer id){
+    return studentService.update(request, id);
   }
 
   @DeleteMapping("/{id}")
   public void delete(@PathVariable Integer id) {
     studentService.delete(id);
+  }
+
+  @GetMapping("/{groupNo}")
+  public StudentResponse getStudentByStudentCodeAndGroupCode(@RequestBody StudentSearchRequest request,
+                                                             @PathVariable String groupNo) {
+
+    return studentService.getStudentByGroupNoAndStudentCode(groupNo, request.getStudentCode());
   }
 
 }
