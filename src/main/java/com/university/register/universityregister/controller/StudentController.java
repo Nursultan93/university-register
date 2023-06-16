@@ -49,10 +49,10 @@ public class StudentController {
 
 
 
-  @GetMapping("/qrupNo/{groupNo}")
-  public List<StudentResponse> findByStudentGroupNo(@PathVariable String groupNo){
+  @GetMapping("/qrupNo/{grupNo}")
+  public List<StudentResponse> findByStudentGroupNo(@PathVariable String grupNo){
 
-    return studentService.findByStudentGroupNo(groupNo);
+    return studentService.findByStudentGroupNo(grupNo);
   }
 
 
@@ -60,7 +60,7 @@ public class StudentController {
 
 
 
-  @GetMapping("/rofession/{profession}")
+  @GetMapping("/profession/{profession}")
   public List<StudentResponse> finByStudentProfession(@PathVariable String profession){
 
     return studentService.finByStudentProfession(profession);
