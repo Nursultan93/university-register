@@ -8,9 +8,9 @@ import java.util.List;
 
 public interface StudentRepository extends JpaRepository<Student, Integer> {
 
-    List<Student> findStudentByGroupNo(String groupNo);
+   List<Student>  findStudentByGroupNo(String grupNo);
 
-    List<Student> findStudentByProfession(String profession);
+   List<Student> findStudentByProfession(String profession);
 
     Optional<Student> findStudentByGroupNoAndStudentCode(String groupNo, String studentCode);
 

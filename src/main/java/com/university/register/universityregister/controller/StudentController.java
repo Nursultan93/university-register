@@ -39,11 +39,39 @@ public class StudentController {
     studentService.delete(id);
   }
 
-  @GetMapping("/{groupNo}")
+  @GetMapping("/stcode/{groupNo}")
   public StudentResponse getStudentByStudentCodeAndGroupCode(@RequestBody StudentSearchRequest request,
                                                              @PathVariable String groupNo) {
 
     return studentService.getStudentByGroupNoAndStudentCode(groupNo, request.getStudentCode());
   }
+
+
+
+
+  @GetMapping("/qrupNo/{grupNo}")
+  public List<StudentResponse> findByStudentGroupNo(@PathVariable String grupNo){
+
+    return studentService.findByStudentGroupNo(grupNo);
+  }
+
+
+
+
+
+
+  @GetMapping("/profession/{profession}")
+  public List<StudentResponse> finByStudentProfession(@PathVariable String profession){
+
+    return studentService.finByStudentProfession(profession);
+  }
+
+
+
+
+
+
+
+
 
 }

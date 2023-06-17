@@ -5,12 +5,11 @@ import com.university.register.universityregister.dto.request.StudentRequest;
 import com.university.register.universityregister.dto.request.StudentUpdateRequest;
 import com.university.register.universityregister.dto.response.StudentResponse;
 import com.university.register.universityregister.repository.StudentRepository;
-import java.util.ArrayList;
+
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
-import org.modelmapper.TypeToken;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -54,6 +53,8 @@ public class StudentService {
     var studentResponse = mapper.map(studentNew, StudentResponse.class);
 
     return studentResponse;
+
+
   }
 
   public void delete(Integer id){
@@ -71,15 +72,32 @@ public class StudentService {
     return studentResponse;
   }
 
-  public List<Student> findByStudentGroupNo(String gruoNo){
 
-    return studentRepository.findStudentByGroupNo(gruoNo);
+  public List<StudentResponse> findByStudentGroupNo(String groupNo){
+    List<Student> studentList = studentRepository.findStudentByGroupNo(groupNo);
+
+    List<StudentResponse> studentResponseList = studentList.stream().map(itm ->
+            mapper.map(itm, StudentResponse.class)
+    ).collect(Collectors.toList());
+
+
+    return studentResponseList;
+
 
   }
 
-  public List<Student> finByStudentProfession(String profession){
 
-    return studentRepository.findStudentByProfession(profession);
+
+  public List<StudentResponse> finByStudentProfession(String profession){
+    List<Student> studentList = studentRepository.findStudentByProfession(profession);
+
+    List<StudentResponse> studentResponseList = studentList.stream().map(itm ->
+            mapper.map(itm, StudentResponse.class)
+    ).collect(Collectors.toList());
+
+
+    return studentResponseList;
+
 
   }
 

@@ -40,7 +40,15 @@ public class UniversityRegisterApplication implements ApplicationRunner {
         .groupNo("9ISB3")
         .studentCode("ASJOD4").build();
 
-    studentRepository.saveAll(Arrays.asList(elcin, ayaz));
+    Student arif = Student.builder()
+            .name("arif")
+            .lastName("agayev")
+            .birthDate("07.03.1994")
+            .profession("DB")
+            .groupNo("9ISB3")
+            .studentCode("4585285").build();
+
+    studentRepository.saveAll(Arrays.asList(elcin, ayaz,arif));
 
   }
 
