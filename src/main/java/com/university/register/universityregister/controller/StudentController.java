@@ -1,6 +1,5 @@
 package com.university.register.universityregister.controller;
 
-import com.university.register.universityregister.domain.Student;
 import com.university.register.universityregister.dto.request.StudentRequest;
 import com.university.register.universityregister.dto.request.StudentSearchRequest;
 import com.university.register.universityregister.dto.request.StudentUpdateRequest;

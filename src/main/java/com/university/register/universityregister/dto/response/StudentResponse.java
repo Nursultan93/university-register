@@ -10,5 +10,6 @@ public class StudentResponse {
   private String lastName;
   private String groupNo;
   private String studentCode;
+  private ProfessionResponse profession;
 
 }
