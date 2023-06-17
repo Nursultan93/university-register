@@ -1,9 +1,11 @@
 package com.university.register.universityregister.service;
 
+import com.university.register.universityregister.domain.Profession;
 import com.university.register.universityregister.domain.Student;
 import com.university.register.universityregister.dto.request.StudentRequest;
 import com.university.register.universityregister.dto.request.StudentUpdateRequest;
 import com.university.register.universityregister.dto.response.StudentResponse;
+import com.university.register.universityregister.repository.ProfessionRepository;
 import com.university.register.universityregister.repository.StudentRepository;
 
 import java.util.List;
@@ -17,6 +19,7 @@ import org.springframework.stereotype.Service;
 public class StudentService {
 
   private final StudentRepository studentRepository;
+  private final ProfessionRepository professionRepository;
   private final ModelMapper mapper;
 
   public StudentResponse create(StudentRequest request) {
@@ -61,7 +64,6 @@ public class StudentService {
     studentRepository.deleteById(id);
   }
 
-
   public StudentResponse getStudentByGroupNoAndStudentCode(String groupNo, String studentCode) {
 
     var student = studentRepository.findStudentByGroupNoAndStudentCode(groupNo, studentCode)
@@ -72,32 +74,28 @@ public class StudentService {
     return studentResponse;
   }
 
-
   public List<StudentResponse> findByStudentGroupNo(String groupNo){
+
     List<Student> studentList = studentRepository.findStudentByGroupNo(groupNo);
 
     List<StudentResponse> studentResponseList = studentList.stream().map(itm ->
             mapper.map(itm, StudentResponse.class)
     ).collect(Collectors.toList());
 
-
     return studentResponseList;
-
-
   }
 
+  public List<StudentResponse> finByStudentProfession(String name){
 
+    Profession profession = professionRepository.findProfessionByName(name).orElseThrow(() -> new RuntimeException("Yoxudur"));
 
-  public List<StudentResponse> finByStudentProfession(String profession){
-    List<Student> studentList = studentRepository.findStudentByProfession(profession);
+    var studentList = studentRepository.findStudentByProfession(profession);
 
     List<StudentResponse> studentResponseList = studentList.stream().map(itm ->
-            mapper.map(itm, StudentResponse.class)
+        mapper.map(itm, StudentResponse.class)
     ).collect(Collectors.toList());
 
-
     return studentResponseList;
-
 
   }
 

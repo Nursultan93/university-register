@@ -1,5 +1,6 @@
 package com.university.register.universityregister.repository;
 
+import com.university.register.universityregister.domain.Profession;
 import com.university.register.universityregister.domain.Student;
 import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -13,5 +14,7 @@ public interface StudentRepository extends JpaRepository<Student, Integer> {
    List<Student> findStudentByProfession(String profession);
 
     Optional<Student> findStudentByGroupNoAndStudentCode(String groupNo, String studentCode);
+
+    List<Student> findStudentByProfession(Profession profession);
 
 }
