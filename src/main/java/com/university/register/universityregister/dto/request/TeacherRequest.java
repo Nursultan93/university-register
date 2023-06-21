@@ -9,5 +9,6 @@ public class TeacherRequest {
 
     private String firstName;
     private String lastName;
+    private ProfessionTeacherRequest profession;
 
 }

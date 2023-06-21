@@ -9,5 +9,5 @@ public class TeacherResponse {
     private Integer id;
     private String firstName;
     private String lastName;
-    private ProfessionResponse professionResponse;
+    private ProfessionResponse profession;
 }

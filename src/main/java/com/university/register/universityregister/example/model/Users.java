@@ -1,28 +1,28 @@
-package com.university.register.universityregister.domain;
+package com.university.register.universityregister.example.model;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "Teachers")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Teacher {
+public class Users {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Integer id;
-  private String firstName;
-  private String lastName;
-  @ManyToOne(cascade = CascadeType.MERGE)
-  private Profession profession;
+  private String name;
+  @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+  @JoinColumn(name = "addr_id", referencedColumnName = "id")
+  private Address address;
 }

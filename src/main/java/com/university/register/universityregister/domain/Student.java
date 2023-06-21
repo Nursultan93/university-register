@@ -6,6 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -31,7 +32,8 @@ public class Student {
   private String groupNo;
   @Column(unique = true)
   private String studentCode;
-  @ManyToOne
+  @ManyToOne(cascade = CascadeType.MERGE)
+  @JoinColumn(name = "profession_id")
   private Profession profession;
 
 }
