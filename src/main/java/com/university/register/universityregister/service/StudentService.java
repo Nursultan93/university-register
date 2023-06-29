@@ -5,6 +5,7 @@ import com.university.register.universityregister.domain.Student;
 import com.university.register.universityregister.dto.request.StudentRequest;
 import com.university.register.universityregister.dto.request.StudentUpdateRequest;
 import com.university.register.universityregister.dto.response.StudentResponse;
+import com.university.register.universityregister.exception.StudentNotFound;
 import com.university.register.universityregister.repository.ProfessionRepository;
 import com.university.register.universityregister.repository.StudentRepository;
 
@@ -67,7 +68,7 @@ public class StudentService {
   public StudentResponse getStudentByGroupNoAndStudentCode(String groupNo, String studentCode) {
 
     var student = studentRepository.findStudentByGroupNoAndStudentCode(groupNo, studentCode)
-        .orElseThrow(() -> new RuntimeException("Bazada telebe yoxdur"));
+        .orElseThrow(() -> new StudentNotFound("Bazada melumat yoxdur"));
 
     var studentResponse = mapper.map(student, StudentResponse.class);
 
