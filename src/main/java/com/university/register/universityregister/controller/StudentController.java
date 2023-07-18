@@ -6,6 +6,8 @@ import com.university.register.universityregister.dto.request.StudentUpdateReque
 import com.university.register.universityregister.dto.response.StudentResponse;
 import com.university.register.universityregister.service.StudentService;
 import java.util.List;
+
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +21,7 @@ public class StudentController {
   private final StudentService studentService;
 
   @PostMapping
-  public ResponseEntity<StudentResponse> create(@RequestBody StudentRequest student){
+  public ResponseEntity<StudentResponse> create(@RequestBody @Valid StudentRequest student){
     return new ResponseEntity<>(studentService.create(student), HttpStatus.CREATED);
   }
 
